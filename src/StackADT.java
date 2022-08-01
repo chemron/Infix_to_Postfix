@@ -80,5 +80,7 @@ public class StackADT
     {
         StackADT stack = new StackADT();
         stack.push("hello");
+        System.out.println("hello 2");
     }
+
 }
