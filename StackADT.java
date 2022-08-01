@@ -61,6 +61,14 @@ public class StackADT
     }
 
     /**
+     * the copy constructor for StackADT
+     */
+    public StackADT(StackADT anotherStack)
+    {
+        this.top = anotherStack.top;
+    }
+
+    /**
      * checks if the stack is empty
      * @return true if the stack is empty, otherwise false
      */

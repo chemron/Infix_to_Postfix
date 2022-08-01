@@ -2,12 +2,41 @@ public class Main
 {
     public static void main(String[] args)
     {
+        stackTesting();
+        queueTesting();
+    }
+    
+    public static void queueTesting()
+    {
+        QueueADT queue = new QueueADT();
+        for (char ch: "hello".toCharArray())
+            queue.enqueue(String.valueOf(ch));
+        queue.print();
+        System.out.print("dequeue: ");
+        System.out.println(queue.dequeue());
+        System.out.println("enqueue: !");
+        queue.enqueue("!");
+        queue.print();
+        while (!queue.isEmpty())
+        {
+            System.out.print("front: ");
+            System.out.println(queue.queueFront());
+            System.out.print("dequeue: ");
+            System.out.println(queue.dequeue());
+            queue.print();
+        }
+    }
+
+    public static void stackTesting()
+    {
         StackADT stack = new StackADT();
-        stack.push("h");
-        stack.push("e");
-        stack.push("l");
-        stack.push("l");
-        stack.push("o");
+        for (char ch: "hello".toCharArray())
+            stack.push(String.valueOf(ch));
+        stack.print();
+        System.out.print("pop: ");
+        System.out.println(stack.pop());
+        System.out.println("push: !");
+        stack.push("!");
         stack.print();
         while (!stack.isEmpty())
         {
