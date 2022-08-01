@@ -51,15 +51,56 @@ public class StackADT
             this.next = next;
         }
     }
-
     private StackNode top;
-    private int size;
 
     /**
      * the default constructor for StackADT
      */
     public StackADT()
     {
+    }
+
+    /**
+     * checks if the stack is empty
+     * @return true if the stack is empty, otherwise false
+     */
+    public boolean isEmpty()
+    {
+        return (top == null);
+    }
+
+    /**
+     *  pops the top value from the stack
+     *  @return the data at the top of the stack
+     */
+    public String pop()
+    {
+        if (isEmpty())
+            throw new IndexOutOfBoundsException("Stack is empty.");
+        
+        String value = top.getData();
+        top = top.getNext();
+        return value;
+    }
+
+    /**
+     * prints the contents of the stack
+     */
+    public void print()
+    {
+        if (isEmpty())
+        {
+            System.out.println("Stack is Empty.");
+            return;
+        }
+
+        System.out.println("Stack:");
+        StackNode nd = top;
+        while (nd != null)
+        {
+            System.out.println("\t" + nd.data);
+            nd = nd.getNext();
+        }
     }
 
     /**
@@ -73,14 +114,17 @@ public class StackADT
         newTop.setNext(top);
 
         top = newTop;
-        size++;
     }
 
-    public static void main(String[] args)
+    /**
+     * gets the data at the top of the stack
+     * @return the data at the top of the stack.
+     */
+    public String stackTop()
     {
-        StackADT stack = new StackADT();
-        stack.push("hello");
-        System.out.println("hello 2");
-    }
+        if (isEmpty())
+            throw new IndexOutOfBoundsException("Stack is empty.");
 
+        return top.getData();
+    }
 }
