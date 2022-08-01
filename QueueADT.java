@@ -15,7 +15,7 @@ public class QueueADT {
      * removes and returns the item at the front of the queue
      * @return the item at the front of the queue
      */
-    public String dequeue()
+    public char dequeue()
     {
         // if there is at least one element
         // at the front the queue, pop and return it
@@ -38,7 +38,7 @@ public class QueueADT {
      * adds an item to the back of the queue
      * @param data the item to add
      */
-    public void enqueue(String data)
+    public void enqueue(char data)
     {
         backStack.push(data);
     }
@@ -89,7 +89,7 @@ public class QueueADT {
      * returns the item at the front of the queue
      * @return the item at the front of the queue
      */
-    public String queueFront()
+    public char queueFront()
     {
         if (isEmpty())
             throw new IndexOutOfBoundsException("Queue is Empty");

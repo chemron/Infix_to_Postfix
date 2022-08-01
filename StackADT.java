@@ -1,11 +1,11 @@
 /**
- * This class defines a stack capable of storing strings
+ * This class defines a stack capable of storing chars
  */
 public class StackADT
 {
     public static class StackNode
     {
-        private String data;
+        private char data;
         private StackNode next;
 
         /**
@@ -17,9 +17,9 @@ public class StackADT
 
         /**
          * accessor method for data
-         * @return the data String
+         * @return the data char
          */
-        public String getData()
+        public char getData()
         {
             return data;
         }
@@ -35,9 +35,9 @@ public class StackADT
 
         /**
          * Mutator method to set the data
-         * @param data a string we want to store in the current StackNode
+         * @param data a char we want to store in the current StackNode
          */
-        public void setData(String data)
+        public void setData(char data)
         {
             this.data = data;
         }
@@ -81,12 +81,12 @@ public class StackADT
      *  pops the top value from the stack
      *  @return the data at the top of the stack
      */
-    public String pop()
+    public char pop()
     {
         if (isEmpty())
             throw new IndexOutOfBoundsException("Stack is empty.");
         
-        String value = top.getData();
+        char value = top.getData();
         top = top.getNext();
         return value;
     }
@@ -113,9 +113,9 @@ public class StackADT
 
     /**
      * pushes data on to the top of the stack
-     * @param data the string to be pushed to the stack
+     * @param data the char to be pushed to the stack
      */
-    public void push(String data)
+    public void push(char data)
     {
         StackNode newTop = new StackNode();
         newTop.setData(data);
@@ -128,7 +128,7 @@ public class StackADT
      * gets the data at the top of the stack
      * @return the data at the top of the stack.
      */
-    public String stackTop()
+    public char stackTop()
     {
         if (isEmpty())
             throw new IndexOutOfBoundsException("Stack is empty.");

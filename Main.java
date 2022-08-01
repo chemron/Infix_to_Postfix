@@ -10,12 +10,12 @@ public class Main
     {
         QueueADT queue = new QueueADT();
         for (char ch: "hello".toCharArray())
-            queue.enqueue(String.valueOf(ch));
+            queue.enqueue(ch);
         queue.print();
         System.out.print("dequeue: ");
         System.out.println(queue.dequeue());
         System.out.println("enqueue: !");
-        queue.enqueue("!");
+        queue.enqueue('!');
         queue.print();
         while (!queue.isEmpty())
         {
@@ -31,12 +31,12 @@ public class Main
     {
         StackADT stack = new StackADT();
         for (char ch: "hello".toCharArray())
-            stack.push(String.valueOf(ch));
+            stack.push(ch);
         stack.print();
         System.out.print("pop: ");
         System.out.println(stack.pop());
         System.out.println("push: !");
-        stack.push("!");
+        stack.push('!');
         stack.print();
         while (!stack.isEmpty())
         {
