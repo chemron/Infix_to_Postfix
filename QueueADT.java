@@ -63,26 +63,8 @@ public class QueueADT {
             return;
         }
 
-        // create copies of the stacks so we don't alter them while printing
-        StackADT printFrontStack = new StackADT(frontStack);
-        StackADT printBackStack = new StackADT(backStack);
-
         System.out.println("Queue:");
-        // if front stack is not empty, print the front of the queue first
-        while (!printFrontStack.isEmpty())
-        {
-            System.out.println("\t" + printFrontStack.pop());
-        }
-
-        // load elements from back of queue into the front of the queue
-        while (!printBackStack.isEmpty())
-            printFrontStack.push(printBackStack.pop());
-        
-        // print rest of queue
-        while (!printFrontStack.isEmpty())
-        {
-            System.out.println("\t" + printFrontStack.pop());
-        }
+        System.out.println(this);
     }
 
     /**
@@ -104,5 +86,36 @@ public class QueueADT {
             frontStack.push(backStack.pop());
         
         return frontStack.stackTop();
+    }
+
+    public String toString()
+    {
+        if (isEmpty())
+        {
+            return "Queue is Empty.";
+        }
+
+        
+        StringBuffer buffer = new StringBuffer("");
+
+        // front of queue
+        if (!frontStack.isEmpty())
+            buffer.append(frontStack);
+        
+        // if back stack is empty, we are done
+        if (backStack.isEmpty())
+            return buffer.toString();
+
+        StackADT printStack = new StackADT();
+        // create a copy of the backStack so we don't alter it
+        StackADT backStackCopy = new StackADT(backStack);
+        // load elements from back of queue into the printStack
+        while (!backStackCopy.isEmpty())
+            printStack.push(backStackCopy.pop());
+        
+        // rest of queue
+        buffer.append(printStack);
+
+        return buffer.toString();
     }
 }

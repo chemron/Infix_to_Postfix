@@ -103,12 +103,7 @@ public class StackADT
         }
 
         System.out.println("Stack:");
-        StackNode nd = top;
-        while (nd != null)
-        {
-            System.out.println("\t" + nd.data);
-            nd = nd.getNext();
-        }
+        System.out.println(this);
     }
 
     /**
@@ -134,5 +129,23 @@ public class StackADT
             throw new IndexOutOfBoundsException("Stack is empty.");
 
         return top.getData();
+    }
+
+    public String toString()
+    {
+        if (isEmpty())
+        {
+            return "Stack is Empty.";
+        }
+
+        StringBuffer buffer = new StringBuffer("");
+        StackNode nd = top;
+        while (nd != null)
+        {
+            buffer.append(nd.data);
+            nd = nd.getNext();
+        }
+
+        return buffer.toString();
     }
 }

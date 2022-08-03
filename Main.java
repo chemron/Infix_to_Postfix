@@ -2,8 +2,17 @@ public class Main
 {
     public static void main(String[] args)
     {
-        stackTesting();
-        queueTesting();
+        // stackTesting();
+        // queueTesting();
+        infixToPostfixTesting();
+    }
+
+    public static void infixToPostfixTesting()
+    {
+        InfixToPostfix objInfixToPostfix = new InfixToPostfix();
+        String in1 = "(6+2)*5-8/4";
+        String post1 = objInfixToPostfix.convertToPostfix(in1);
+        System.out.println(post1);
     }
     
     public static void queueTesting()
@@ -14,6 +23,7 @@ public class Main
         queue.print();
         System.out.print("dequeue: ");
         System.out.println(queue.dequeue());
+        queue.print();
         System.out.println("enqueue: !");
         queue.enqueue('!');
         queue.print();
