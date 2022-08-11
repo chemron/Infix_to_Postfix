@@ -88,6 +88,10 @@ public class QueueADT {
         return frontStack.stackTop();
     }
 
+    /**
+     * returns a string representation of the queue
+     * @return a string representation of the queue
+     */
     public String toString()
     {
         if (isEmpty())

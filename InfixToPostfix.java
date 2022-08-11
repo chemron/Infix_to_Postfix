@@ -3,6 +3,12 @@ public class InfixToPostfix {
     {
     }
     
+    /**
+     * takes a infix expression as a string and returns a postfix expression as
+     * a string
+     * @param infixExpression a string infix expression
+     * @return a string postfix expression
+     */
     public String convertToPostfix(String infixExpression)
     {
         QueueADT infix = readInfix(infixExpression);
@@ -10,6 +16,12 @@ public class InfixToPostfix {
         return postfix.toString();
     }
 
+    /**
+     * takes a infix expression as a queue and returns a postfix expression as
+     * a queue
+     * @param infix a infix expression as a queue
+     * @return a postfix expression as a queue
+     */
     private QueueADT createPostfix(QueueADT infix)
     {
         if (infix.isEmpty())
@@ -61,14 +73,30 @@ public class InfixToPostfix {
                     );
         }
 
+        if (!infix.isEmpty())
+            throw new IllegalArgumentException(
+                "Infix expression is not valid."
+                );
+
+
         return postfix;
     }
-                
+         
+    /**
+     * checks if given character is a numeric digit
+     * @param ch a character
+     * @return true if ch is a digit, otherwise false
+     */
     public boolean isDigit(char ch)
     {
         return "1234567890".indexOf(ch) >= 0;
     }
     
+    /**
+     * checks if given character is a valid character
+     * @param ch a character
+     * @return true if ch is a valid operator, otherwise false
+     */
     public boolean isOperator(char ch)
     {
         return "+-*/%^".indexOf(ch) >= 0;
@@ -87,6 +115,12 @@ public class InfixToPostfix {
         return precedenceValue(operator1) >= precedenceValue(operator2);
     }
     
+    /**
+     * gives a precedence vale for each operator
+     * @param operator an operator character
+     * @return the precedence value for the given operator (1 for + or -, 2 for
+     * *, /, or %, 3 for ^)
+     */
     public int precedenceValue(char operator)
     {
         switch (operator)
@@ -104,6 +138,11 @@ public class InfixToPostfix {
         }
     }
 
+    /**
+     * reads an infix expression as a string and returns it as a queue
+     * @param infixExpression an infix expression as a string
+     * @return the infix expression as a string
+     */
     private QueueADT readInfix(String infixExpression)
     {
         QueueADT infix = new QueueADT();

@@ -131,6 +131,10 @@ public class StackADT
         return top.getData();
     }
 
+    /**
+     * returns a string representation of the stack
+     * @return a string representation of the stack
+     */
     public String toString()
     {
         if (isEmpty())
