@@ -32,20 +32,44 @@ public class InfixToPostfix {
         StackADT stack = new StackADT();                
         stack.push('(');
 
-        QueueADT postfix = new QueueADT();     
+        QueueADT postfix = new QueueADT();
+        
+        // to ensure that the infix expression is valid, we don't want two
+        // consecutive digits, or two consecutive operators (excluding
+        // parentheses)
+        // furthermore, the first and last non-parenthesis character should be a
+        // digit
+        // To meet these requirements, we use the following bool (initially set
+        // to true to ensure first character is a digit)
+        boolean lastCharIsOp = true;
         
         while (!stack.isEmpty())
         {
             char currentChar = infix.dequeue();
             // if current char is a digit
             if (isDigit(currentChar))
-            postfix.enqueue(currentChar);
+            {
+                if (!lastCharIsOp)
+                {
+                    throw new IllegalArgumentException(
+                        "Infix expression is not valid."
+                        );
+                }
+                postfix.enqueue(currentChar);
+                lastCharIsOp = false;
+            }
             // if current char is ( 
             else if (currentChar == '(')
-            stack.push(currentChar);
+                stack.push(currentChar);
             // if current char is an operator
             else if (isOperator(currentChar))
             {
+                if (lastCharIsOp)
+                {
+                    throw new IllegalArgumentException(
+                        "Infix expression is not valid."
+                        );
+                }
                 char topChar = stack.stackTop();
                 while (isOperator(topChar))
                 {
@@ -57,6 +81,7 @@ public class InfixToPostfix {
                     else break;
                 }
                 stack.push(currentChar);
+                lastCharIsOp = true;
             }
             // if current char is )
             else if (currentChar == ')')
@@ -73,11 +98,10 @@ public class InfixToPostfix {
                     );
         }
 
-        if (!infix.isEmpty())
+        if (!infix.isEmpty() || lastCharIsOp)
             throw new IllegalArgumentException(
                 "Infix expression is not valid."
                 );
-
 
         return postfix;
     }
